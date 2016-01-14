@@ -1,0 +1,7 @@
+#.htaccess
+RewriteEngine On
+
+#조건이 맞으면 rule을 따름
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^bit/(.*)$ bit.php?url=$1 [L,QSA]
+
