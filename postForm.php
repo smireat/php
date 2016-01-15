@@ -1,4 +1,5 @@
 <?php
+ session_start();
  header("Content-type: text/html; charset=UTF-8");
 ?>
 
@@ -28,7 +29,7 @@
 -->
 
 <?php
-$isLogin = $_COOKIE['isLogin'];
+$isLogin = $_SESSION['isLogin'];
 #is Login 값이없어도 if문을 실행하게 되는것임
 if($isLogin != 1){
 
@@ -46,9 +47,7 @@ if($isLogin != 1){
 
 <?php
 }else {
-
-$name = $_COOKIE['name'];
-
+$name = $_SESSION['name'];
 ?>
 
 <?=$name?>님 이미 로그인이 되어있습니다.<br>

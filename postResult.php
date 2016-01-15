@@ -8,6 +8,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <?php
+ #header < session
+ session_start();
  header("Content-type: text/html; charset=UTF-8");
  
  $name = $_POST['name'];
@@ -17,8 +19,8 @@
 <?php
 
 if($name == "admin" && $pw=="1234"){
-setCookie('isLogin', '1');
-setCookie('name', $name);
+ $_SESSION['isLogin'] = 1;
+ $_SESSION['name'] = $name;
 ?>
 
 <h1>로그인 완료</h1>
@@ -28,10 +30,8 @@ setCookie('name', $name);
 
 <?php
 }else{
-
-setCookie('isLogin', '0');
-setCookie('name', '');
-
+ $_SESSION['isLogin'] = 0;
+ $_SESSION['name'] = '';
 ?>
 아이디 암호가 일치하는 사용자가 없습니다.
 로그인 페이지로 <a href="./postForm.php">돌아가기</a>
