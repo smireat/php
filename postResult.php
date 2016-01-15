@@ -16,7 +16,7 @@
 ?>
 <?php
 
-if($name == "admin" && $password=="1234"){
+if($name == "admin" && $pw=="1234"){
 setCookie('isLogin', '1');
 setCookie('name', $name);
 ?>
