@@ -11,14 +11,30 @@
  header("Content-type: text/html; charset=UTF-8");
  
  $name = $_POST['name'];
- $year = $_POST['year'];
- $mon = $_POST['mon'];
- $day = $_POST['day'];
- 
- $age = 2016-$year+1;
+ $pw = $_POST['pw'];
+
+?>
+<?php
+
+if($name == "admin" && $password=="1234"){
+setCookie('isLogin', '1');
+setCookie('name', $name);
 ?>
 
-
-<h1>환영합니다</h1>
+<h1>로그인 완료</h1>
 <?=$name?>님 안녕하세요.
-당신은 2016년 올해 <?=$age?>살입니다.
+암호는 <?=$pw?>입니다.
+로그인 페이지로 <a href="./postForm.php">돌아가기</a>
+
+<?php
+}else{
+
+setCookie('isLogin', '0');
+setCookie('name', '');
+
+?>
+아이디 암호가 일치하는 사용자가 없습니다.
+로그인 페이지로 <a href="./postForm.php">돌아가기</a>
+<?php
+}
+?>
