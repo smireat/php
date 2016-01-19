@@ -15,10 +15,35 @@
  $name = $_POST['name'];
  $pw = $_POST['pw'];
 
+ include('db.php');
+
+
 ?>
 <?php
 
+//DB 연결
+ $link = mysql_connect($db['host'], $db['user'], $db['pw']);
+ if (!$link) {
+     die('Could not connect: ' . mysql_error());
+ }
+//사용할 DB선택
+ mysql_select_db($db['db']);
+//SQL문 작성
+ $sql= "select * from members where id='".$name."' and pwd=password('".$pw."')";
+
+//DB실행
+ $result = mysql_query($sql);
+ $users = mysql_fetch_assoc($result);
+ echo "<pre>";
+print_r($users);
+ echo "</pre>";
+
+//DB연결 해제
+ mysql_close($link);
+ 
 if($name == "admin" && $pw=="1234"){
+
+
  $_SESSION['isLogin'] = 1;
  $_SESSION['name'] = $name;
 ?>
